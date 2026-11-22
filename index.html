@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Royale Shopping</title>
+<meta name="description" content="Royale Shopping, la boutique de l'Église Alliance Royale : t-shirts ACENA 2026.">
+<meta name="theme-color" content="#2A0A4A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Royale Shopping">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Montserrat',system-ui,sans-serif;color:#2A0A4A;background:#FBF6EA;line-height:1.55}
+a{color:inherit}
+h1,h2{font-family:'Cinzel',Georgia,serif;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+header{background:#1B0630;border-bottom:2px solid #D4A62A}
+header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#F2CF66}
+.brand img{width:48px;height:48px;display:block}
+.brand span{font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:22px;letter-spacing:.1em}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px}
+nav a{color:#fff;text-decoration:none;font-weight:500;font-size:15px;padding:12px 0}
+nav a.cta{background:#F2CF66;color:#1B0630;font-weight:600;padding:12px 22px;border-radius:999px}
+.hero{background:#2A0A4A}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding-top:56px;padding-bottom:56px}
+.hero .txt{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.3em;color:#F2CF66}
+.hero h1{font-weight:700;font-size:clamp(32px,6vw,52px);line-height:1.1;color:#fff}
+.hero p{margin:0;font-size:18px;color:#EADFF5;max-width:520px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;padding-top:6px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 28px;border-radius:999px;border:2px solid transparent;font-family:inherit;font-size:16px;cursor:pointer}
+.btn.gold{background:#F2CF66;color:#1B0630}
+.btn.line{border-color:#F2CF66;color:#F2CF66;background:transparent}
+.btn.dark{background:#2A0A4A;color:#F2CF66}
+.hero .pic{flex:1 1 360px;min-width:0}
+.hero .pic img{width:100%;height:auto;display:block;border-radius:20px;border:3px solid #D4A62A}
+#install{display:none}
+.hint{font-size:14px;color:#CDB8E3;margin:0}
+.shop{padding:64px 0}
+.title{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;margin-bottom:36px}
+.title h2{font-size:clamp(28px,5vw,40px)}
+.title .tag{font-weight:600;font-size:18px;color:#7A5200}
+.title .bar{width:80px;height:3px;background:#D4A62A;margin-top:6px}
+.grid{display:flex;flex-wrap:wrap;gap:28px}
+.card{flex:1 1 420px;min-width:0;background:#fff;border:1px solid #E6DCC3;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;height:auto;display:block}
+.card .body{padding:22px;display:flex;flex-direction:column;gap:12px}
+.card .name{display:flex;align-items:center;gap:12px}
+.card .dot{width:22px;height:22px;border-radius:50%;border:2px solid #D4A62A;flex:none}
+.card h3{margin:0;font-size:21px;font-weight:600}
+.card p{margin:0;color:#5B4A70;font-size:15px}
+.card .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:4px}
+.price{font-weight:600;font-size:18px;color:#7A5200}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:44px;height:44px;border-radius:50%;border:2px solid #D4A62A;background:#fff;color:#2A0A4A;font-size:22px;font-weight:600;cursor:pointer}
+.qty output{min-width:32px;text-align:center;font-weight:600;font-size:18px}
+.btn.wave{background:#0E6FA3;color:#fff;text-align:center}
+.about{background:#fff;border-top:1px solid #E6DCC3;border-bottom:1px solid #E6DCC3;padding:64px 0}
+.about .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
+.about img{width:100%;max-width:220px;height:auto;display:block}
+.about .t{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.about h2{font-size:clamp(26px,4.5vw,36px)}
+.about p{margin:0;font-size:17px;color:#3E2A55}
+.order{background:#2A0A4A;padding:64px 0;text-align:center}
+.order h2{color:#F2CF66;font-size:clamp(28px,5vw,40px);margin-bottom:28px}
+.steps{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
+.step{flex:1 1 240px;max-width:340px;background:#3A1560;border:1px solid #D4A62A;border-radius:16px;padding:26px 22px;text-align:left}
+.step b{display:block;font-family:'Cinzel',Georgia,serif;font-size:34px;color:#F2CF66}
+.step strong{display:block;color:#fff;font-size:18px;margin-top:4px}
+.step span{display:block;color:#EADFF5;font-size:15px;margin-top:6px}
+footer{background:#1B0630;border-top:2px solid #D4A62A;color:#EADFF5;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:24px;padding-bottom:24px}
+footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
+</style>
+</head>
+<body>
+
+<header>
+<div class="wrap">
+<a class="brand" href="#accueil">
+<img src="img/logo-ar.png" alt="Logo de l'Église Alliance Royale">
+<span>ROYALE SHOPPING</span>
+</a>
+<nav>
+<a href="#boutique">Boutique</a>
+<a href="#apropos">À propos</a>
+<a class="cta" href="#commander">Commander</a>
+</nav>
+</div>
+</header>
+
+<main>
+<section id="accueil" class="hero">
+<div class="wrap">
+<div class="txt">
+<div class="eyebrow">ÉGLISE ALLIANCE ROYALE</div>
+<h1>Portez votre foi avec fierté</h1>
+<p>La boutique officielle de l'Église Alliance Royale. Découvrez les t-shirts ACENA 2026 pour vivre ensemble 31 jours de jeûne et de prière.</p>
+<div class="btns">
+<a class="btn gold" href="#boutique">Voir les t-shirts</a>
+<a class="btn line" href="#commander">Comment commander</a>
+<button class="btn gold" id="install" type="button">Installer l'application</button>
+</div>
+<p class="hint" id="ioshint" hidden>Sur iPhone : touchez Partager, puis « Sur l'écran d'accueil ».</p>
+</div>
+<div class="pic">
+<img src="img/tshirt-noir.jpg" alt="T-shirt ACENA 2026 noir, face et dos">
+</div>
+</div>
+</section>
+
+<section id="boutique" class="shop">
+<div class="wrap">
+<div class="title">
+<h2>T-shirts ACENA 2026</h2>
+<div class="tag">#31 jours de jeûne &amp; prière</div>
+<div class="bar"></div>
+</div>
+<div class="grid">
+
+<article class="card">
+<img src="img/tshirt-blanc.jpg" alt="T-shirt ACENA 2026 blanc, face et dos">
+<div class="body">
+<div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>T-shirt ACENA 2026 · Blanc</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
+<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+</div>
+</article>
+
+<article class="card">
+<img src="img/tshirt-bleu.jpg" alt="T-shirt ACENA 2026 bleu ciel, face et dos">
+<div class="body">
+<div class="name"><span class="dot" style="background:#2DA8E8"></span><h3>T-shirt ACENA 2026 · Bleu ciel</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
+<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+</div>
+</article>
+
+<article class="card">
+<img src="img/tshirt-noir.jpg" alt="T-shirt ACENA 2026 noir, face et dos">
+<div class="body">
+<div class="name"><span class="dot" style="background:#111111"></span><h3>T-shirt ACENA 2026 · Noir</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
+<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+</div>
+</article>
+
+<article class="card">
+<img src="img/tshirt-jaune.jpg" alt="T-shirt ACENA 2026 jaune, face et dos">
+<div class="body">
+<div class="name"><span class="dot" style="background:#FFD500"></span><h3>T-shirt ACENA 2026 · Jaune</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
+<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="apropos" class="about">
+<div class="wrap">
+<img src="img/logo-ar.png" alt="Logo de l'Église Alliance Royale">
+<div class="t">
+<h2>À propos de Royale Shopping</h2>
+<p>Royale Shopping est la boutique de l'Église Alliance Royale. Vous y trouvez les t-shirts de la campagne ACENA 2026, à porter pendant 31 jours de jeûne et de prière.</p>
+<p>Chaque modèle porte le message de la campagne : Yamoussoukro, tes promesses s'accompliront.</p>
+</div>
+</div>
+</section>
+
+<section id="commander" class="order">
+<div class="wrap">
+<h2>Comment commander</h2>
+<div class="steps">
+<div class="step"><b>1</b><strong>Choisissez votre couleur</strong><span>Blanc, bleu ciel, noir ou jaune, puis la quantité.</span></div>
+<div class="step"><b>2</b><strong>Payez avec Wave</strong><span>Le montant est déjà saisi : 3 500 FCFA par t-shirt.</span></div>
+<div class="step"><b>3</b><strong>Envoyez votre taille</strong><span>Avec la capture du paiement, sur WhatsApp : 07 11 48 23 24</span></div>
+</div>
+<p style="margin:28px 0 0"><a class="btn gold" href="https://wa.me/2250711482324?text=Bonjour%2C%20j%27ai%20pay%C3%A9%20mon%20t-shirt%20ACENA%202026.%0A%0ACouleur%20%3A%0ATaille%20%3A%0AQuantit%C3%A9%20%3A" target="_blank" rel="noopener">Envoyer ma commande sur WhatsApp</a></p>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<b>ROYALE SHOPPING</b>
+<span>© 2026 Église Alliance Royale · Yamoussoukro, Côte d'Ivoire</span>
+</div>
+</footer>
+
+<script>
+(function () {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () {});
+    });
+  }
+  var deferred = null;
+  var btn = document.getElementById('install');
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault();
+    deferred = e;
+    btn.style.display = 'inline-block';
+  });
+  btn.addEventListener('click', function () {
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function () {
+      deferred = null;
+      btn.style.display = 'none';
+    });
+  });
+  window.addEventListener('appinstalled', function () {
+    btn.style.display = 'none';
+  });
+  var BASE = 'https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/';
+  var UNIT = 3500;
+  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+  document.querySelectorAll('.card').forEach(function (card) {
+    var out = card.querySelector('output');
+    var pay = card.querySelector('.wave');
+    var q = 1;
+    card.querySelectorAll('.qty button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        q = Math.min(20, Math.max(1, q + Number(b.getAttribute('data-d'))));
+        var total = q * UNIT;
+        out.textContent = q;
+        pay.href = BASE + '?amount=' + total;
+        pay.textContent = 'Payer ' + fmt(total) + ' FCFA avec Wave';
+      });
+    });
+  });
+  var ua = navigator.userAgent;
+  var isIOS = /iPad|iPhone|iPod/.test(ua);
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if (isIOS && !standalone) {
+    document.getElementById('ioshint').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
