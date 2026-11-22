@@ -1,0 +1,64 @@
+ROYALE SHOPPING - MISE EN LIGNE ET COMPTE ADMIN
+================================================
+
+Ce que fait l'application
+- Le client choisit un t-shirt, remplit son NOM et son TÉLÉPHONE (obligatoires),
+  son EMAIL (facultatif), sa taille et sa quantité.
+- La commande est enregistrée, puis le client paie avec Wave (montant déjà saisi)
+  et vous envoie la capture sur WhatsApp.
+- Vous voyez toutes les commandes dans la page admin : admin.html
+  (nom, téléphone, email, t-shirt, taille, quantité, montant, statut).
+
+Pour stocker les commandes, il faut un projet Firebase gratuit (comme pour Entre Nous).
+Je vous conseille un NOUVEAU projet, pour ne pas mélanger avec Entre Nous.
+
+ÉTAPE 1 - Créer le projet
+  console.firebase.google.com > Ajouter un projet > nom : royale-shopping
+  (Google Analytics : vous pouvez le désactiver)
+
+ÉTAPE 2 - Créer la base de données
+  Menu Build > Firestore Database > Créer une base de données
+  Choisissez une région proche (par exemple europe-west) et le mode production.
+
+ÉTAPE 3 - Créer le compte admin
+  Menu Build > Authentication > Commencer > Email/Mot de passe > Activer
+  Onglet Users > Ajouter un utilisateur : votre email et un mot de passe solide.
+  Notez bien cet email : c'est votre identifiant admin.
+
+ÉTAPE 4 - Copier la configuration
+  Roue dentée > Paramètres du projet > Vos applications > icône Web (</>)
+  Donnez un nom, puis copiez les valeurs de "firebaseConfig".
+  Collez-les dans le fichier firebase-config.js (à la place des VOTRE_...).
+
+ÉTAPE 5 - Protéger les données
+  Firestore Database > onglet Règles
+  Copiez tout le contenu du fichier firestore.rules.
+  Remplacez ADMIN_EMAIL_ICI par l'email admin de l'étape 3, en minuscules.
+  Cliquez sur Publier.
+  Résultat : tout le monde peut envoyer une commande, mais seul votre compte admin
+  peut lire les noms et les numéros de téléphone.
+
+ÉTAPE 6 - Autoriser votre site
+  Authentication > Paramètres > Domaines autorisés > Ajouter un domaine
+  Ajoutez votre domaine GitHub, par exemple : daveprop.github.io
+
+ÉTAPE 7 - Mettre en ligne sur GitHub Pages
+  Envoyez TOUS les fichiers de ce dossier dans votre dépôt GitHub
+  (index.html, app.js, admin.html, admin.js, firebase-config.js, sw.js,
+  manifest.webmanifest, dossiers icons et img), puis activez GitHub Pages.
+
+UTILISATION
+- Site client : https://VOTRE-COMPTE.github.io/NOM-DU-DEPOT/
+- Espace admin : https://VOTRE-COMPTE.github.io/NOM-DU-DEPOT/admin.html
+  Connectez-vous avec l'email et le mot de passe de l'étape 3.
+  Pour chaque commande vous pouvez appeler ou écrire sur WhatsApp en un clic,
+  puis changer le statut : En attente, Payé, Livré, Annulé.
+  Le bouton "Exporter en CSV" télécharge la liste pour Excel.
+
+CONSEILS
+- Quand une capture Wave arrive sur WhatsApp, cherchez le client dans l'admin
+  et passez sa commande à "Payé".
+- Gardez votre mot de passe admin pour vous seul.
+- Si le prix change, il faut modifier 3500 dans app.js ET dans firestore.rules.
+- Après chaque mise à jour des fichiers, rouvrez l'application deux fois
+  pour qu'elle charge la nouvelle version.

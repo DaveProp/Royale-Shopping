@@ -35,10 +35,13 @@ nav a.cta{background:#F2CF66;color:#1B0630;font-weight:600;padding:12px 22px;bor
 .hero h1{font-weight:700;font-size:clamp(32px,6vw,52px);line-height:1.1;color:#fff}
 .hero p{margin:0;font-size:18px;color:#EADFF5;max-width:520px}
 .btns{display:flex;flex-wrap:wrap;gap:12px;padding-top:6px}
-.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 28px;border-radius:999px;border:2px solid transparent;font-family:inherit;font-size:16px;cursor:pointer}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 28px;border-radius:999px;border:2px solid transparent;font-family:inherit;font-size:16px;cursor:pointer;text-align:center}
 .btn.gold{background:#F2CF66;color:#1B0630}
 .btn.line{border-color:#F2CF66;color:#F2CF66;background:transparent}
 .btn.dark{background:#2A0A4A;color:#F2CF66}
+.btn.wave{background:#0E6FA3;color:#fff}
+.btn.outline{border-color:#2A0A4A;color:#2A0A4A;background:transparent}
+.btn:disabled{opacity:.6;cursor:default}
 .hero .pic{flex:1 1 360px;min-width:0}
 .hero .pic img{width:100%;height:auto;display:block;border-radius:20px;border:3px solid #D4A62A}
 #install{display:none}
@@ -58,10 +61,6 @@ nav a.cta{background:#F2CF66;color:#1B0630;font-weight:600;padding:12px 22px;bor
 .card p{margin:0;color:#5B4A70;font-size:15px}
 .card .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:4px}
 .price{font-weight:600;font-size:18px;color:#7A5200}
-.qty{display:flex;align-items:center;gap:6px}
-.qty button{width:44px;height:44px;border-radius:50%;border:2px solid #D4A62A;background:#fff;color:#2A0A4A;font-size:22px;font-weight:600;cursor:pointer}
-.qty output{min-width:32px;text-align:center;font-weight:600;font-size:18px}
-.btn.wave{background:#0E6FA3;color:#fff;text-align:center}
 .about{background:#fff;border-top:1px solid #E6DCC3;border-bottom:1px solid #E6DCC3;padding:64px 0}
 .about .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
 .about img{width:100%;max-width:220px;height:auto;display:block}
@@ -78,6 +77,28 @@ nav a.cta{background:#F2CF66;color:#1B0630;font-weight:600;padding:12px 22px;bor
 footer{background:#1B0630;border-top:2px solid #D4A62A;color:#EADFF5;font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:24px;padding-bottom:24px}
 footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
+
+/* Fenêtre de commande */
+dialog{border:0;border-radius:18px;padding:0;width:min(480px,92vw);max-height:92vh;color:#2A0A4A;background:#fff}
+dialog::backdrop{background:rgba(27,6,48,.72)}
+.dlg{padding:26px 22px 24px;position:relative}
+.dlg h2{font-size:26px;margin-bottom:6px;padding-right:44px}
+.dlg .close{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:#F3ECFA;color:#2A0A4A;font-size:26px;cursor:pointer}
+.muted{margin:0 0 18px;color:#5B4A70;font-size:15px}
+.dlg label{display:block;font-weight:600;font-size:15px;margin-bottom:14px}
+.dlg .req{color:#B3261E}
+.dlg .opt{font-weight:400;color:#5B4A70}
+.dlg input,.dlg select{width:100%;padding:12px;font-size:16px;border:1.5px solid #CDB8E3;border-radius:10px;margin-top:6px;font-family:inherit;background:#fff;color:#2A0A4A}
+.two{display:flex;flex-wrap:wrap;gap:14px}
+.two>*{flex:1 1 150px;min-width:0}
+.qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.qty button{width:46px;height:46px;border-radius:50%;border:2px solid #D4A62A;background:#fff;color:#2A0A4A;font-size:22px;font-weight:600;cursor:pointer}
+.qty output{min-width:34px;text-align:center;font-weight:600;font-size:18px}
+.total{display:flex;justify-content:space-between;align-items:center;font-size:18px;margin:6px 0 16px}
+.total b{color:#7A5200;font-size:22px}
+.err{color:#9B1C1C;background:#FDECEC;border-radius:10px;padding:10px 14px;margin:0 0 14px;font-weight:500;font-size:15px}
+.big{width:100%}
+.stack{display:flex;flex-direction:column;gap:12px;margin-top:18px}
 </style>
 </head>
 <body>
@@ -130,8 +151,7 @@ footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
 <div class="body">
 <div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>T-shirt ACENA 2026 · Blanc</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
-<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Blanc">Commander</button></div>
 </div>
 </article>
 
@@ -140,8 +160,7 @@ footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
 <div class="body">
 <div class="name"><span class="dot" style="background:#2DA8E8"></span><h3>T-shirt ACENA 2026 · Bleu ciel</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
-<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Bleu ciel">Commander</button></div>
 </div>
 </article>
 
@@ -150,8 +169,7 @@ footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
 <div class="body">
 <div class="name"><span class="dot" style="background:#111111"></span><h3>T-shirt ACENA 2026 · Noir</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
-<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Noir">Commander</button></div>
 </div>
 </article>
 
@@ -160,8 +178,7 @@ footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
 <div class="body">
 <div class="name"><span class="dot" style="background:#FFD500"></span><h3>T-shirt ACENA 2026 · Jaune</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><div class="qty"><button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button><output aria-live="polite">1</output><button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button></div></div>
-<a class="btn wave" href="https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/?amount=3500" target="_blank" rel="noopener">Payer 3 500 FCFA avec Wave</a>
+<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Jaune">Commander</button></div>
 </div>
 </article>
 
@@ -184,11 +201,10 @@ footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
 <div class="wrap">
 <h2>Comment commander</h2>
 <div class="steps">
-<div class="step"><b>1</b><strong>Choisissez votre couleur</strong><span>Blanc, bleu ciel, noir ou jaune, puis la quantité.</span></div>
-<div class="step"><b>2</b><strong>Payez avec Wave</strong><span>Le montant est déjà saisi : 3 500 FCFA par t-shirt.</span></div>
-<div class="step"><b>3</b><strong>Envoyez votre taille</strong><span>Avec la capture du paiement, sur WhatsApp : 07 11 48 23 24</span></div>
+<div class="step"><b>1</b><strong>Choisissez votre t-shirt</strong><span>Touchez « Commander » sous la couleur voulue.</span></div>
+<div class="step"><b>2</b><strong>Remplissez vos informations</strong><span>Nom et téléphone obligatoires, email facultatif, puis taille et quantité.</span></div>
+<div class="step"><b>3</b><strong>Payez avec Wave</strong><span>Le montant est déjà saisi : 3 500 FCFA par t-shirt. Envoyez ensuite la capture sur WhatsApp : 07 11 48 23 24</span></div>
 </div>
-<p style="margin:28px 0 0"><a class="btn gold" href="https://wa.me/2250711482324?text=Bonjour%2C%20j%27ai%20pay%C3%A9%20mon%20t-shirt%20ACENA%202026.%0A%0ACouleur%20%3A%0ATaille%20%3A%0AQuantit%C3%A9%20%3A" target="_blank" rel="noopener">Envoyer ma commande sur WhatsApp</a></p>
 </div>
 </section>
 </main>
@@ -200,55 +216,61 @@ footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
 </div>
 </footer>
 
-<script>
-(function () {
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('sw.js').catch(function () {});
-    });
-  }
-  var deferred = null;
-  var btn = document.getElementById('install');
-  window.addEventListener('beforeinstallprompt', function (e) {
-    e.preventDefault();
-    deferred = e;
-    btn.style.display = 'inline-block';
-  });
-  btn.addEventListener('click', function () {
-    if (!deferred) return;
-    deferred.prompt();
-    deferred.userChoice.then(function () {
-      deferred = null;
-      btn.style.display = 'none';
-    });
-  });
-  window.addEventListener('appinstalled', function () {
-    btn.style.display = 'none';
-  });
-  var BASE = 'https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/';
-  var UNIT = 3500;
-  function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
-  document.querySelectorAll('.card').forEach(function (card) {
-    var out = card.querySelector('output');
-    var pay = card.querySelector('.wave');
-    var q = 1;
-    card.querySelectorAll('.qty button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        q = Math.min(20, Math.max(1, q + Number(b.getAttribute('data-d'))));
-        var total = q * UNIT;
-        out.textContent = q;
-        pay.href = BASE + '?amount=' + total;
-        pay.textContent = 'Payer ' + fmt(total) + ' FCFA avec Wave';
-      });
-    });
-  });
-  var ua = navigator.userAgent;
-  var isIOS = /iPad|iPhone|iPod/.test(ua);
-  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
-  if (isIOS && !standalone) {
-    document.getElementById('ioshint').hidden = false;
-  }
-})();
-</script>
+<dialog id="orderDialog" aria-labelledby="odTitle">
+<div class="dlg">
+<button class="close" type="button" id="odClose" aria-label="Fermer">×</button>
+
+<div id="stepForm">
+<h2 id="odTitle">Votre commande</h2>
+<p class="muted" id="odItem"></p>
+<form id="orderForm" novalidate>
+<label>Nom complet <span class="req">*</span>
+<input name="nom" type="text" required autocomplete="name" maxlength="80">
+</label>
+<label>Téléphone <span class="req">*</span>
+<input name="telephone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="07 00 00 00 00" maxlength="20">
+</label>
+<label>Email <span class="opt">(facultatif)</span>
+<input name="email" type="email" autocomplete="email" maxlength="120">
+</label>
+<div class="two">
+<label>Taille <span class="req">*</span>
+<select name="taille" required>
+<option value="">Choisir</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+</label>
+<div>
+<div style="font-weight:600;font-size:15px">Quantité</div>
+<div class="qty">
+<button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button>
+<output id="odQty" aria-live="polite">1</output>
+<button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button>
+</div>
+</div>
+</div>
+<p class="err" id="odErr" role="alert" hidden></p>
+<div class="total"><span>Total</span><b id="odTotal">3 500 FCFA</b></div>
+<button class="btn gold big" type="submit" id="odSubmit">Valider ma commande</button>
+</form>
+</div>
+
+<div id="stepPay" hidden>
+<h2>Commande enregistrée</h2>
+<p class="muted">Merci <b id="payName"></b>. Dernière étape : payez <b id="payTotal"></b> avec Wave, puis envoyez la capture du paiement sur WhatsApp.</p>
+<div class="stack">
+<a class="btn wave" id="payWave" href="#" target="_blank" rel="noopener">Payer avec Wave</a>
+<a class="btn gold" id="payWa" href="#" target="_blank" rel="noopener">Envoyer la capture sur WhatsApp</a>
+<button class="btn outline" id="odDone" type="button">Fermer</button>
+</div>
+</div>
+</div>
+</dialog>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>

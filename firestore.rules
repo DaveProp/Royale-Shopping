@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /commandes/{id} {
+
+      // Tout client peut ENVOYER une commande (nom et téléphone obligatoires, email facultatif).
+      allow create: if request.resource.data.keys().hasOnly(
+            ['nom', 'telephone', 'email', 'couleur', 'taille', 'quantite', 'montant', 'statut', 'createdAt'])
+        && request.resource.data.nom is string
+        && request.resource.data.nom.size() >= 2
+        && request.resource.data.nom.size() <= 100
+        && request.resource.data.telephone is string
+        && request.resource.data.telephone.size() >= 8
+        && request.resource.data.telephone.size() <= 20
+        && (!('email' in request.resource.data)
+            || (request.resource.data.email is string && request.resource.data.email.size() <= 120))
+        && request.resource.data.couleur in ['Blanc', 'Bleu ciel', 'Noir', 'Jaune']
+        && request.resource.data.taille in ['S', 'M', 'L', 'XL', 'XXL']
+        && request.resource.data.quantite is int
+        && request.resource.data.quantite >= 1
+        && request.resource.data.quantite <= 20
+        && request.resource.data.montant == request.resource.data.quantite * 3500
+        && request.resource.data.statut == 'en_attente'
+        && request.resource.data.createdAt == request.time;
+
+      // Seul le compte admin peut LIRE, modifier ou supprimer les commandes.
+      // Remplacez ADMIN_EMAIL_ICI par l'email du compte admin, en minuscules.
+      allow read, update, delete: if request.auth != null
+        && request.auth.token.email == 'ADMIN_EMAIL_ICI';
+    }
+  }
+}
