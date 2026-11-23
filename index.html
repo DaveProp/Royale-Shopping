@@ -4,217 +4,503 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Royale Shopping</title>
-<meta name="description" content="Royale Shopping, la boutique de l'Église Alliance Royale : t-shirts ACENA 2026.">
-<meta name="theme-color" content="#2A0A4A">
+<meta name="description" content="Royale Shopping, la boutique de l'Église Alliance Royale : t-shirts ACENA 2026, 31 jours de jeûne et de prière.">
+<meta name="theme-color" content="#12041F">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Royale Shopping">
+<script>document.documentElement.className+=' js'</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Concept : boutique de prestige violet et or, une scène animée en ouverture, puis des sections qui se révèlent au défilement */
+:root{
+  --ink:#12041F;
+  --violet:#2A0A4A;
+  --violet-2:#3A1560;
+  --gold:#F2CF66;
+  --gold-2:#D4A62A;
+  --gold-3:#9A6F0A;
+  --cream:#FBF6EA;
+  --line:#E6DCC3;
+  --text:#2A0A4A;
+  --muted:#5B4A70;
+  --wave:#0E6FA3;
+  --wa:#25D366;
+  --serif:'Cinzel',Georgia,serif;
+  --sans:'Montserrat',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --glow:#F2CF66;
+}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:'Montserrat',system-ui,sans-serif;color:#2A0A4A;background:#FBF6EA;line-height:1.55}
+html{scroll-behavior:smooth;scroll-padding-top:78px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);color:var(--text);background:var(--cream);line-height:1.6;overflow-x:hidden}
+img{max-width:100%}
 a{color:inherit}
-h1,h2{font-family:'Cinzel',Georgia,serif;margin:0}
+h1,h2,h3{margin:0}
 .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
-header{background:#1B0630;border-bottom:2px solid #D4A62A}
-header .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#F2CF66}
-.brand img{width:48px;height:48px;display:block}
-.brand span{font-family:'Cinzel',Georgia,serif;font-weight:700;font-size:22px;letter-spacing:.1em}
-nav{display:flex;flex-wrap:wrap;align-items:center;gap:4px 24px}
-nav a{color:#fff;text-decoration:none;font-weight:500;font-size:15px;padding:12px 0}
-nav a.cta{background:#F2CF66;color:#1B0630;font-weight:600;padding:12px 22px;border-radius:999px}
-.hero{background:#2A0A4A}
-.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding-top:56px;padding-bottom:56px}
-.hero .txt{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:18px}
-.eyebrow{font-weight:600;font-size:13px;letter-spacing:.3em;color:#F2CF66}
-.hero h1{font-weight:700;font-size:clamp(32px,6vw,52px);line-height:1.1;color:#fff}
-.hero p{margin:0;font-size:18px;color:#EADFF5;max-width:520px}
-.btns{display:flex;flex-wrap:wrap;gap:12px;padding-top:6px}
-.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 28px;border-radius:999px;border:2px solid transparent;font-family:inherit;font-size:16px;cursor:pointer;text-align:center}
-.btn.gold{background:#F2CF66;color:#1B0630}
-.btn.line{border-color:#F2CF66;color:#F2CF66;background:transparent}
-.btn.dark{background:#2A0A4A;color:#F2CF66}
-.btn.wave{background:#0E6FA3;color:#fff}
-.btn.outline{border-color:#2A0A4A;color:#2A0A4A;background:transparent}
-.btn:disabled{opacity:.6;cursor:default}
-.hero .pic{flex:1 1 360px;min-width:0}
-.hero .pic img{width:100%;height:auto;display:block;border-radius:20px;border:3px solid #D4A62A}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* Écran d'ouverture */
+#splash{position:fixed;inset:0;z-index:200;background:radial-gradient(circle at 50% 42%,#3A1560,#12041F 72%);display:grid;place-items:center;align-content:center;gap:18px;animation:splashOut .6s ease 1.5s forwards}
+#splash img{width:112px;height:112px;animation:pop 1s cubic-bezier(.2,.9,.3,1.25) both,glow 1.8s ease-in-out infinite}
+#splash b{font-family:var(--serif);font-size:20px;letter-spacing:.32em;color:var(--gold);padding-left:.32em;animation:fadeUp .8s ease .4s both}
+@keyframes splashOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+@keyframes pop{from{transform:scale(.3) rotate(-12deg);opacity:0}to{transform:none;opacity:1}}
+@keyframes glow{50%{filter:drop-shadow(0 0 22px rgba(242,207,102,.7))}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* En-tête */
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .3s,box-shadow .3s}
+header.scrolled{background:rgba(18,4,31,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(242,207,102,.28)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--gold)}
+.brand img{width:44px;height:44px;display:block}
+.brand span{display:flex;flex-direction:column;line-height:1.1}
+.brand b{font-family:var(--serif);font-weight:700;font-size:20px;letter-spacing:.14em}
+.brand small{font-size:10px;letter-spacing:.28em;color:#CDB8E3;margin-top:3px;font-weight:500}
+nav{display:flex;align-items:center;gap:6px 26px}
+nav a{color:#fff;text-decoration:none;font-weight:500;font-size:15px;padding:10px 0;position:relative}
+nav a:not(.cta)::after{content:"";position:absolute;left:0;bottom:4px;height:2px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:not(.cta):hover::after{transform:scaleX(1)}
+nav a.cta{background:var(--gold);color:var(--ink);font-weight:700;padding:11px 22px;border-radius:999px;transition:transform .2s,box-shadow .2s}
+nav a.cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(242,207,102,.35)}
+#burger{display:none;width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(242,207,102,.6);background:transparent;color:var(--gold);cursor:pointer;padding:0}
+#burger span,#burger span::before,#burger span::after{display:block;width:20px;height:2px;background:currentColor;margin:0 auto;position:relative;transition:transform .3s,background .3s}
+#burger span::before,#burger span::after{content:"";position:absolute;left:0}
+#burger span::before{top:-6px}
+#burger span::after{top:6px}
+#burger[aria-expanded="true"] span{background:transparent}
+#burger[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}
+#burger[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* Scène d'ouverture */
+.hero{position:relative;overflow:hidden;color:#fff;padding:128px 0 84px;background:
+  radial-gradient(55% 55% at 82% 18%,rgba(242,207,102,.2),transparent 62%),
+  radial-gradient(70% 70% at 6% 92%,rgba(135,58,205,.5),transparent 62%),
+  linear-gradient(165deg,#2A0A4A 0%,#12041F 100%)}
+.sparks{position:absolute;inset:0;pointer-events:none}
+.spark{position:absolute;bottom:-12px;left:var(--x);width:var(--s,6px);height:var(--s,6px);border-radius:50%;background:var(--gold);box-shadow:0 0 10px 2px rgba(242,207,102,.7);opacity:0;animation:rise var(--d,12s) linear var(--w,0s) infinite}
+@keyframes rise{0%{transform:translate(0,0) scale(.5);opacity:0}12%{opacity:.9}100%{transform:translate(var(--dx,20px),-105vh) scale(1.15);opacity:0}}
+.hero .wrap{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:48px}
+.hero .txt{flex:1 1 440px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:12px;letter-spacing:.3em;color:var(--gold);padding:8px 16px;border:1px solid rgba(242,207,102,.45);border-radius:999px;background:rgba(242,207,102,.08)}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.6);opacity:.5}}
+.hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(38px,6.2vw,72px);line-height:1.06;letter-spacing:.01em;text-wrap:balance}
+.shine{background:linear-gradient(100deg,#B8860B 8%,#F9E08B 38%,#FFF6C8 50%,#F9E08B 62%,#B8860B 92%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 4.5s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.hero p.lead{margin:0;font-size:clamp(16px,2.2vw,19px);color:#E3D5F2;max-width:540px}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-family:var(--sans);font-weight:700;font-size:16px;padding:16px 30px;border-radius:999px;border:2px solid transparent;cursor:pointer;min-height:50px;transition:transform .2s,box-shadow .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.gold{background:linear-gradient(135deg,#F9E08B,#D4A62A);color:var(--ink);box-shadow:0 10px 28px rgba(212,166,42,.35)}
+.btn.gold:hover{box-shadow:0 16px 34px rgba(212,166,42,.5)}
+.btn.gold::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:sweep 3.6s ease-in-out infinite}
+@keyframes sweep{0%,55%{left:-70%}100%{left:130%}}
+.btn.line{border-color:var(--gold);color:var(--gold);background:transparent}
+.btn.line:hover{background:rgba(242,207,102,.12)}
+.btn.dark{background:var(--violet);color:var(--gold)}
+.btn.dark:hover{box-shadow:0 12px 26px rgba(42,10,74,.35)}
+.btn.wave{background:var(--wave);color:#fff}
+.btn.outline{border-color:var(--violet);color:var(--violet);background:transparent}
+.btn:disabled{opacity:.6;cursor:default;transform:none}
 #install{display:none}
 .hint{font-size:14px;color:#CDB8E3;margin:0}
-.shop{padding:64px 0}
-.title{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;margin-bottom:36px}
-.title h2{font-size:clamp(28px,5vw,40px)}
-.title .tag{font-weight:600;font-size:18px;color:#7A5200}
-.title .bar{width:80px;height:3px;background:#D4A62A;margin-top:6px}
-.grid{display:flex;flex-wrap:wrap;gap:28px}
-.card{flex:1 1 420px;min-width:0;background:#fff;border:1px solid #E6DCC3;border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
-.card img{width:100%;height:auto;display:block}
-.card .body{padding:22px;display:flex;flex-direction:column;gap:12px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:6px;color:#CDB8E3;font-size:14px;font-weight:500}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Vitrine du héros */
+.show{flex:1 1 440px;min-width:0;display:flex;flex-direction:column;align-items:center;gap:20px}
+.stage{position:relative;width:100%;max-width:600px}
+.stage::before{content:"";position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(closest-side,var(--glow),transparent 72%);opacity:.38;filter:blur(26px);transition:background .8s;animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.08);opacity:.55}}
+.frame{position:relative;border-radius:26px;padding:6px;background:linear-gradient(135deg,#F9E08B,#9A6F0A 45%,#F2CF66);box-shadow:0 30px 60px rgba(0,0,0,.45);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px) rotate(-.8deg)}}
+.slides{position:relative;aspect-ratio:3/2;border-radius:21px;overflow:hidden;background:#fff}
+.slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.07);transition:opacity .9s ease,transform 1.6s ease}
+.slide.on{opacity:1;transform:scale(1)}
+.tag{position:absolute;top:-14px;right:-8px;z-index:2;background:var(--ink);color:var(--gold);border:1.5px solid var(--gold);border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px;letter-spacing:.04em;box-shadow:0 10px 24px rgba(0,0,0,.4);animation:tagBob 3.4s ease-in-out infinite}
+@keyframes tagBob{50%{transform:translateY(-6px) rotate(3deg)}}
+.pick{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.swatches{display:flex;gap:14px}
+.sw{width:46px;height:46px;border-radius:50%;border:3px solid rgba(255,255,255,.25);cursor:pointer;padding:0;transition:transform .25s,border-color .25s,box-shadow .25s;background:var(--c)}
+.sw:hover{transform:scale(1.12)}
+.sw[aria-pressed="true"]{border-color:var(--gold);transform:scale(1.18);box-shadow:0 0 0 4px rgba(242,207,102,.25)}
+#showLabel{font-weight:600;font-size:15px;letter-spacing:.06em;color:#E3D5F2}
+
+/* Bandeau défilant */
+.marquee{background:linear-gradient(90deg,#9A6F0A,#F2CF66 50%,#9A6F0A);color:var(--ink);overflow:hidden;white-space:nowrap;padding:15px 0;border-block:1px solid rgba(18,4,31,.25)}
+.track{display:inline-flex;animation:scroll 32s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.track span{font-family:var(--serif);font-weight:700;font-size:17px;letter-spacing:.16em;padding-right:36px}
+.track span::after{content:"✦";margin-left:36px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* Sections */
+.reveal{--i:0}
+.js .reveal{opacity:0;transform:translateY(32px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--i) * 110ms)}
+.js .reveal.in{opacity:1;transform:none}
+.sec{padding:92px 0}
+.head{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin-bottom:48px}
+.kicker{font-weight:700;font-size:12px;letter-spacing:.34em;color:var(--gold-3);text-transform:uppercase}
+.head h2{font-family:var(--serif);font-weight:800;font-size:clamp(30px,5vw,46px);line-height:1.12;text-wrap:balance}
+.head p{margin:0;color:var(--muted);max-width:560px;font-size:17px}
+.rule{width:90px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--gold-2),transparent);margin-top:8px}
+
+/* Boutique */
+.grid{display:flex;flex-wrap:wrap;gap:30px}
+.cell{flex:1 1 440px;min-width:0;display:flex}
+.card{position:relative;width:100%;background:#fff;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 12px 34px rgba(42,10,74,.09);transition:box-shadow .35s,transform .25s ease-out;will-change:transform}
+.card:hover{box-shadow:0 26px 56px rgba(42,10,74,.24)}
+.card .ph{position:relative;overflow:hidden;aspect-ratio:3/2;background:#fff}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .ph img{transform:scale(1.07)}
+.card .price{position:absolute;top:14px;left:14px;background:var(--ink);color:var(--gold);font-weight:700;font-size:14px;padding:8px 14px;border-radius:999px;border:1px solid rgba(242,207,102,.6)}
+.card .body{padding:24px;display:flex;flex-direction:column;gap:12px}
 .card .name{display:flex;align-items:center;gap:12px}
-.card .dot{width:22px;height:22px;border-radius:50%;border:2px solid #D4A62A;flex:none}
-.card h3{margin:0;font-size:21px;font-weight:600}
-.card p{margin:0;color:#5B4A70;font-size:15px}
-.card .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:4px}
-.price{font-weight:600;font-size:18px;color:#7A5200}
-.about{background:#fff;border-top:1px solid #E6DCC3;border-bottom:1px solid #E6DCC3;padding:64px 0}
-.about .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:40px}
-.about img{width:100%;max-width:220px;height:auto;display:block}
-.about .t{flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:14px}
-.about h2{font-size:clamp(26px,4.5vw,36px)}
+.card .dot{width:24px;height:24px;border-radius:50%;border:2px solid var(--gold-2);flex:none}
+.card h3{font-size:21px;font-weight:700}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card .row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:6px}
+.card .row strong{font-family:var(--serif);font-size:24px;color:var(--gold-3)}
+
+/* Atouts */
+.dark-band{position:relative;overflow:hidden;color:#fff;background:radial-gradient(60% 80% at 15% 0%,rgba(135,58,205,.4),transparent 60%),linear-gradient(180deg,#2A0A4A,#12041F)}
+.dark-band .kicker{color:var(--gold)}
+.dark-band .head p{color:#CDB8E3}
+.feats{display:flex;flex-wrap:wrap;gap:24px}
+.feat{flex:1 1 280px;min-width:0;padding:30px 26px;border-radius:22px;background:rgba(255,255,255,.05);border:1px solid rgba(242,207,102,.28);transition:transform .35s,border-color .35s,background .35s}
+.feat:hover{transform:translateY(-8px);border-color:var(--gold);background:rgba(255,255,255,.09)}
+.feat .ic{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,#F9E08B,#B8860B);margin-bottom:18px;transition:transform .5s}
+.feat:hover .ic{transform:rotate(-8deg) scale(1.08)}
+.feat .ic svg{width:28px;height:28px;stroke:var(--ink);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:19px;font-weight:700;margin-bottom:8px}
+.feat p{margin:0;color:#CDB8E3;font-size:15px}
+
+/* Chiffres */
+.nums{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 60px;margin-top:64px;padding-top:44px;border-top:1px solid rgba(242,207,102,.25)}
+.num{text-align:center;min-width:140px}
+.num b{display:block;font-family:var(--serif);font-weight:800;font-size:clamp(38px,6vw,56px);line-height:1.1;color:var(--gold);font-variant-numeric:tabular-nums}
+.num span{font-size:14px;color:#CDB8E3;letter-spacing:.06em}
+
+/* Étapes */
+.steps{display:flex;flex-wrap:wrap;gap:28px;position:relative}
+.step{flex:1 1 260px;min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative}
+.step .n{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-weight:800;font-size:30px;color:var(--ink);background:linear-gradient(135deg,#F9E08B,#D4A62A);box-shadow:0 0 0 8px rgba(212,166,42,.18);position:relative;z-index:1}
+.step h3{font-size:19px;font-weight:700}
+.step p{margin:0;color:var(--muted);font-size:15px;max-width:300px}
+.step::before{content:"";position:absolute;top:36px;left:calc(50% + 46px);width:calc(100% - 92px + 28px);height:2px;background:repeating-linear-gradient(90deg,var(--gold-2) 0 8px,transparent 8px 16px);opacity:.7}
+.step:last-child::before{display:none}
+
+/* À propos */
+.about{background:#fff;border-block:1px solid var(--line)}
+.about .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:56px}
+.logos{flex:0 1 300px;min-width:0;display:flex;align-items:center;justify-content:center;gap:0;position:relative;height:260px;width:300px;max-width:100%}
+.logos img{position:absolute;border-radius:50%;box-shadow:0 18px 40px rgba(42,10,74,.28)}
+.logos .l1{width:190px;height:190px;left:0;top:35px;animation:float 7s ease-in-out infinite}
+.logos .l2{width:150px;height:150px;right:0;top:0;background:radial-gradient(circle,#3A1560,#12041F);padding:22px;animation:float 7s ease-in-out -3s infinite}
+.about .t{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.about h2{font-family:var(--serif);font-weight:800;font-size:clamp(28px,4.4vw,40px);line-height:1.15}
 .about p{margin:0;font-size:17px;color:#3E2A55}
-.order{background:#2A0A4A;padding:64px 0;text-align:center}
-.order h2{color:#F2CF66;font-size:clamp(28px,5vw,40px);margin-bottom:28px}
-.steps{display:flex;flex-wrap:wrap;justify-content:center;gap:22px}
-.step{flex:1 1 240px;max-width:340px;background:#3A1560;border:1px solid #D4A62A;border-radius:16px;padding:26px 22px;text-align:left}
-.step b{display:block;font-family:'Cinzel',Georgia,serif;font-size:34px;color:#F2CF66}
-.step strong{display:block;color:#fff;font-size:18px;margin-top:4px}
-.step span{display:block;color:#EADFF5;font-size:15px;margin-top:6px}
-footer{background:#1B0630;border-top:2px solid #D4A62A;color:#EADFF5;font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding-top:24px;padding-bottom:24px}
-footer b{font-family:'Cinzel',Georgia,serif;letter-spacing:.1em;color:#F2CF66}
+
+/* Appel final */
+.final{position:relative;overflow:hidden;text-align:center;color:#fff;padding:96px 0;background:radial-gradient(50% 90% at 50% 0%,rgba(242,207,102,.22),transparent 65%),linear-gradient(180deg,#2A0A4A,#12041F)}
+.final h2{font-family:var(--serif);font-weight:800;font-size:clamp(30px,5.4vw,54px);line-height:1.12;text-wrap:balance;margin-bottom:14px}
+.final p{margin:0 auto 30px;color:#E3D5F2;font-size:18px;max-width:520px}
+
+/* Pied de page */
+footer{background:var(--ink);color:#CDB8E3;border-top:2px solid var(--gold-2);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-top:34px;padding-bottom:34px}
+footer .brand b{font-size:18px}
+footer a{text-decoration:none;color:var(--gold);font-weight:600}
+footer .info{display:flex;flex-direction:column;gap:4px;text-align:right}
+
+/* WhatsApp flottant */
+.wa-float{position:fixed;right:18px;bottom:18px;z-index:80;width:60px;height:60px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 28px rgba(0,0,0,.35);transition:transform .25s}
+.wa-float:hover{transform:scale(1.1)}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid var(--wa);animation:ring 2.2s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.8}to{transform:scale(1.7);opacity:0}}
+.wa-float svg{width:32px;height:32px;fill:#fff}
 
 /* Fenêtre de commande */
-dialog{border:0;border-radius:18px;padding:0;width:min(480px,92vw);max-height:92vh;color:#2A0A4A;background:#fff}
-dialog::backdrop{background:rgba(27,6,48,.72)}
-.dlg{padding:26px 22px 24px;position:relative}
-.dlg h2{font-size:26px;margin-bottom:6px;padding-right:44px}
-.dlg .close{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:#F3ECFA;color:#2A0A4A;font-size:26px;cursor:pointer}
-.muted{margin:0 0 18px;color:#5B4A70;font-size:15px}
+dialog{border:0;border-radius:22px;padding:0;width:min(480px,92vw);max-height:92vh;color:var(--text);background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+dialog[open]{animation:dlgIn .35s cubic-bezier(.2,.8,.3,1.1)}
+dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(24px) scale(.96)}to{opacity:1;transform:none}}
+.dlg{padding:28px 22px 24px;position:relative}
+.dlg h2{font-family:var(--serif);font-size:26px;margin-bottom:6px;padding-right:44px}
+.dlg .close{position:absolute;top:10px;right:10px;width:44px;height:44px;border-radius:50%;border:0;background:#F3ECFA;color:var(--violet);font-size:26px;cursor:pointer}
+.muted{margin:0 0 18px;color:var(--muted);font-size:15px}
 .dlg label{display:block;font-weight:600;font-size:15px;margin-bottom:14px}
 .dlg .req{color:#B3261E}
-.dlg .opt{font-weight:400;color:#5B4A70}
-.dlg input,.dlg select{width:100%;padding:12px;font-size:16px;border:1.5px solid #CDB8E3;border-radius:10px;margin-top:6px;font-family:inherit;background:#fff;color:#2A0A4A}
+.dlg .opt{font-weight:400;color:var(--muted)}
+.dlg input,.dlg select{width:100%;padding:12px;font-size:16px;border:1.5px solid #CDB8E3;border-radius:12px;margin-top:6px;font-family:inherit;background:#fff;color:var(--text)}
 .two{display:flex;flex-wrap:wrap;gap:14px}
 .two>*{flex:1 1 150px;min-width:0}
 .qty{display:flex;align-items:center;gap:8px;margin-top:6px}
-.qty button{width:46px;height:46px;border-radius:50%;border:2px solid #D4A62A;background:#fff;color:#2A0A4A;font-size:22px;font-weight:600;cursor:pointer}
+.qty button{width:46px;height:46px;border-radius:50%;border:2px solid var(--gold-2);background:#fff;color:var(--violet);font-size:22px;font-weight:600;cursor:pointer}
 .qty output{min-width:34px;text-align:center;font-weight:600;font-size:18px}
 .total{display:flex;justify-content:space-between;align-items:center;font-size:18px;margin:6px 0 16px}
-.total b{color:#7A5200;font-size:22px}
+.total b{color:var(--gold-3);font-size:22px}
 .err{color:#9B1C1C;background:#FDECEC;border-radius:10px;padding:10px 14px;margin:0 0 14px;font-weight:500;font-size:15px}
 .big{width:100%}
 .stack{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+
+/* Téléphone */
+@media (max-width:820px){
+  #burger{display:block}
+  nav{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px;background:rgba(18,4,31,.97);border-bottom:2px solid var(--gold-2);transform:translateY(-12px);opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s}
+  nav.open{opacity:1;transform:none;visibility:visible}
+  nav a{padding:15px 0;border-bottom:1px solid rgba(242,207,102,.15)}
+  nav a:not(.cta)::after{display:none}
+  nav a.cta{margin-top:14px;text-align:center;border-bottom:0}
+  header{background:rgba(18,4,31,.9)}
+  .hero{padding:104px 0 64px}
+  .sec{padding:68px 0}
+  .step::before{display:none}
+  .footer-info{text-align:left}
+  footer .info{text-align:left}
+  .tag{right:6px}
+}
+@media (max-width:420px){
+  .brand small{display:none}
+  .btn{width:100%}
+  .logos{height:230px}
+  .logos .l1{width:160px;height:160px}
+  .logos .l2{width:128px;height:128px;padding:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  #splash{display:none}
+  .js .reveal{opacity:1;transform:none}
+  .slide{transform:none}
+}
 </style>
 </head>
 <body>
 
+<div id="splash" aria-hidden="true">
+<img src="logo-royale.svg" alt="">
+<b>ROYALE SHOPPING</b>
+</div>
+
 <header>
 <div class="wrap">
-<a class="brand" href="#accueil">
-<img src="logo-ar.png" alt="Logo de l'Église Alliance Royale">
-<span>ROYALE SHOPPING</span>
+<a class="brand" href="#accueil" aria-label="Royale Shopping, accueil">
+<img src="logo-royale.svg" alt="">
+<span><b>ROYALE SHOPPING</b><small>ÉGLISE ALLIANCE ROYALE</small></span>
 </a>
-<nav>
+<button id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+<nav id="nav">
 <a href="#boutique">Boutique</a>
+<a href="#atouts">Pourquoi nous</a>
+<a href="#commander">Comment commander</a>
 <a href="#apropos">À propos</a>
-<a class="cta" href="#commander">Commander</a>
+<a class="cta" href="#boutique">Commander</a>
 </nav>
 </div>
 </header>
 
 <main>
 <section id="accueil" class="hero">
+<div class="sparks" id="sparks" aria-hidden="true"></div>
 <div class="wrap">
 <div class="txt">
-<div class="eyebrow">ÉGLISE ALLIANCE ROYALE</div>
-<h1>Portez votre foi avec fierté</h1>
-<p>La boutique officielle de l'Église Alliance Royale. Découvrez les t-shirts ACENA 2026 pour vivre ensemble 31 jours de jeûne et de prière.</p>
+<div class="eyebrow"><i></i>COLLECTION ACENA 2026</div>
+<h1>Portez votre <span class="shine">foi</span> avec fierté</h1>
+<p class="lead">La boutique officielle de l'Église Alliance Royale. Les t-shirts ACENA 2026 pour vivre ensemble 31 jours de jeûne et de prière.</p>
 <div class="btns">
 <a class="btn gold" href="#boutique">Voir les t-shirts</a>
-<a class="btn line" href="#commander">Comment commander</a>
+<button class="btn line" id="heroOrder" type="button" data-order="Noir">Commander maintenant</button>
 <button class="btn gold" id="install" type="button">Installer l'application</button>
 </div>
 <p class="hint" id="ioshint" hidden>Sur iPhone : touchez Partager, puis « Sur l'écran d'accueil ».</p>
+<div class="trust">
+<span><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>Paiement Wave</span>
+<span><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.2A8 8 0 1 1 21 12z"/></svg>Suivi par WhatsApp</span>
+<span><svg viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg>4 coloris</span>
 </div>
-<div class="pic">
-<img src="tshirt-noir.jpg" alt="T-shirt ACENA 2026 noir, face et dos">
+</div>
+
+<div class="show">
+<div class="stage" id="stage">
+<span class="tag">3 500 FCFA</span>
+<div class="frame">
+<div class="slides">
+<img class="slide on" src="tshirt-noir.jpg" alt="T-shirt ACENA 2026 noir, face et dos" data-name="Noir" data-glow="#F2CF66">
+<img class="slide" src="tshirt-blanc.jpg" alt="T-shirt ACENA 2026 blanc, face et dos" data-name="Blanc" data-glow="#FFFFFF" loading="lazy">
+<img class="slide" src="tshirt-bleu.jpg" alt="T-shirt ACENA 2026 bleu ciel, face et dos" data-name="Bleu ciel" data-glow="#2DA8E8" loading="lazy">
+<img class="slide" src="tshirt-jaune.jpg" alt="T-shirt ACENA 2026 jaune, face et dos" data-name="Jaune" data-glow="#FFD500" loading="lazy">
+</div>
+</div>
+</div>
+<div class="pick">
+<div class="swatches" role="group" aria-label="Choisir une couleur">
+<button class="sw" type="button" style="--c:#111111" data-i="0" aria-label="Noir" aria-pressed="true"></button>
+<button class="sw" type="button" style="--c:#FFFFFF" data-i="1" aria-label="Blanc" aria-pressed="false"></button>
+<button class="sw" type="button" style="--c:#2DA8E8" data-i="2" aria-label="Bleu ciel" aria-pressed="false"></button>
+<button class="sw" type="button" style="--c:#FFD500" data-i="3" aria-label="Jaune" aria-pressed="false"></button>
+</div>
+<div id="showLabel" aria-live="polite">T-shirt ACENA 2026 · Noir</div>
+</div>
 </div>
 </div>
 </section>
 
-<section id="boutique" class="shop">
+<div class="marquee" aria-hidden="true">
+<div class="track">
+<span>ACENA 2026</span><span>#31 JOURS DE JEÛNE &amp; PRIÈRE</span><span>YAMOUSSOUKRO, TES PROMESSES S'ACCOMPLIRONT</span><span>ÉGLISE ALLIANCE ROYALE</span>
+<span>ACENA 2026</span><span>#31 JOURS DE JEÛNE &amp; PRIÈRE</span><span>YAMOUSSOUKRO, TES PROMESSES S'ACCOMPLIRONT</span><span>ÉGLISE ALLIANCE ROYALE</span>
+</div>
+</div>
+
+<section id="boutique" class="sec">
 <div class="wrap">
-<div class="title">
+<div class="head reveal">
+<div class="kicker">La boutique</div>
 <h2>T-shirts ACENA 2026</h2>
-<div class="tag">#31 jours de jeûne &amp; prière</div>
-<div class="bar"></div>
+<p>Un seul modèle, quatre couleurs. Face : ACENA 2026. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="rule"></div>
 </div>
 <div class="grid">
 
+<div class="cell reveal" style="--i:0">
 <article class="card">
-<img src="tshirt-blanc.jpg" alt="T-shirt ACENA 2026 blanc, face et dos">
+<div class="ph"><img src="tshirt-blanc.jpg" alt="T-shirt ACENA 2026 blanc, face et dos" loading="lazy"><span class="price">3 500 FCFA</span></div>
 <div class="body">
 <div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>T-shirt ACENA 2026 · Blanc</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Blanc">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Blanc">Commander</button></div>
 </div>
 </article>
+</div>
 
+<div class="cell reveal" style="--i:1">
 <article class="card">
-<img src="tshirt-bleu.jpg" alt="T-shirt ACENA 2026 bleu ciel, face et dos">
+<div class="ph"><img src="tshirt-bleu.jpg" alt="T-shirt ACENA 2026 bleu ciel, face et dos" loading="lazy"><span class="price">3 500 FCFA</span></div>
 <div class="body">
 <div class="name"><span class="dot" style="background:#2DA8E8"></span><h3>T-shirt ACENA 2026 · Bleu ciel</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Bleu ciel">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Bleu ciel">Commander</button></div>
 </div>
 </article>
+</div>
 
+<div class="cell reveal" style="--i:0">
 <article class="card">
-<img src="tshirt-noir.jpg" alt="T-shirt ACENA 2026 noir, face et dos">
+<div class="ph"><img src="tshirt-noir.jpg" alt="T-shirt ACENA 2026 noir, face et dos" loading="lazy"><span class="price">3 500 FCFA</span></div>
 <div class="body">
 <div class="name"><span class="dot" style="background:#111111"></span><h3>T-shirt ACENA 2026 · Noir</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Noir">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Noir">Commander</button></div>
 </div>
 </article>
+</div>
 
+<div class="cell reveal" style="--i:1">
 <article class="card">
-<img src="tshirt-jaune.jpg" alt="T-shirt ACENA 2026 jaune, face et dos">
+<div class="ph"><img src="tshirt-jaune.jpg" alt="T-shirt ACENA 2026 jaune, face et dos" loading="lazy"><span class="price">3 500 FCFA</span></div>
 <div class="body">
 <div class="name"><span class="dot" style="background:#FFD500"></span><h3>T-shirt ACENA 2026 · Jaune</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><span class="price">3 500 FCFA</span><button class="btn dark" type="button" data-order="Jaune">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Jaune">Commander</button></div>
 </div>
 </article>
+</div>
 
 </div>
 </div>
 </section>
 
-<section id="apropos" class="about">
+<section id="atouts" class="sec dark-band">
 <div class="wrap">
-<img src="logo-ar.png" alt="Logo de l'Église Alliance Royale">
-<div class="t">
-<h2>À propos de Royale Shopping</h2>
-<p>Royale Shopping est la boutique de l'Église Alliance Royale. Vous y trouvez les t-shirts de la campagne ACENA 2026, à porter pendant 31 jours de jeûne et de prière.</p>
+<div class="head reveal">
+<div class="kicker">Pourquoi Royale Shopping</div>
+<h2>Une commande simple, de bout en bout</h2>
+<div class="rule"></div>
+</div>
+<div class="feats">
+<div class="feat reveal" style="--i:0">
+<div class="ic"><svg viewBox="0 0 24 24"><path d="M8 3 3 6l2 4 2-1v12h10V9l2 1 2-4-5-3a4 4 0 0 1-8 0z"/></svg></div>
+<h3>Un message qui marque</h3>
+<p>ACENA 2026 sur la face, « Yamoussoukro, tes promesses s'accompliront » au dos. Un t-shirt qui porte la campagne.</p>
+</div>
+<div class="feat reveal" style="--i:1">
+<div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20M6 15h4"/></svg></div>
+<h3>Paiement Wave en un geste</h3>
+<p>Le montant est déjà saisi. Vous n'avez rien à calculer, il suffit de valider le paiement.</p>
+</div>
+<div class="feat reveal" style="--i:2">
+<div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.2A8 8 0 1 1 21 12z"/><path d="M8 11h8M8 14h5"/></svg></div>
+<h3>Confirmation sur WhatsApp</h3>
+<p>Envoyez la capture de votre paiement et nous nous occupons de votre commande.</p>
+</div>
+</div>
+<div class="nums">
+<div class="num reveal" style="--i:0"><b data-count="31">31</b><span>JOURS DE JEÛNE ET PRIÈRE</span></div>
+<div class="num reveal" style="--i:1"><b data-count="4">4</b><span>COLORIS DISPONIBLES</span></div>
+<div class="num reveal" style="--i:2"><b data-count="3500">3 500</b><span>FCFA LE T-SHIRT</span></div>
+</div>
+</div>
+</section>
+
+<section id="commander" class="sec">
+<div class="wrap">
+<div class="head reveal">
+<div class="kicker">Comment commander</div>
+<h2>Trois étapes, deux minutes</h2>
+<div class="rule"></div>
+</div>
+<div class="steps">
+<div class="step reveal" style="--i:0"><div class="n">1</div><h3>Choisissez et remplissez</h3><p>Touchez « Commander » sous la couleur voulue. Nom et téléphone obligatoires, email facultatif, puis la taille et la quantité.</p></div>
+<div class="step reveal" style="--i:1"><div class="n">2</div><h3>Payez avec Wave</h3><p>Le montant est déjà saisi : 3 500 FCFA par t-shirt.</p></div>
+<div class="step reveal" style="--i:2"><div class="n">3</div><h3>Envoyez la capture</h3><p>Sur WhatsApp au 07 11 48 23 24, avec votre capture de paiement.</p></div>
+</div>
+</div>
+</section>
+
+<section id="apropos" class="sec about">
+<div class="wrap">
+<div class="logos reveal">
+<img class="l1" src="logo-ar.png" alt="Logo de l'Église Alliance Royale">
+<img class="l2" src="logo-royale.svg" alt="Logo Royale Shopping">
+</div>
+<div class="t reveal" style="--i:1">
+<div class="kicker">À propos</div>
+<h2>La boutique de l'Église Alliance Royale</h2>
+<p>Royale Shopping propose les t-shirts de la campagne ACENA 2026, à porter pendant 31 jours de jeûne et de prière.</p>
 <p>Chaque modèle porte le message de la campagne : Yamoussoukro, tes promesses s'accompliront.</p>
 </div>
 </div>
 </section>
 
-<section id="commander" class="order">
-<div class="wrap">
-<h2>Comment commander</h2>
-<div class="steps">
-<div class="step"><b>1</b><strong>Choisissez votre t-shirt</strong><span>Touchez « Commander » sous la couleur voulue.</span></div>
-<div class="step"><b>2</b><strong>Remplissez vos informations</strong><span>Nom et téléphone obligatoires, email facultatif, puis taille et quantité.</span></div>
-<div class="step"><b>3</b><strong>Payez avec Wave</strong><span>Le montant est déjà saisi : 3 500 FCFA par t-shirt. Envoyez ensuite la capture sur WhatsApp : 07 11 48 23 24</span></div>
-</div>
+<section class="final">
+<div class="wrap reveal">
+<h2>Prêt à porter <span class="shine">ACENA 2026</span> ?</h2>
+<p>Choisissez votre couleur et passez votre commande en quelques secondes.</p>
+<a class="btn gold" href="#boutique">Commander mon t-shirt</a>
 </div>
 </section>
 </main>
 
 <footer>
 <div class="wrap">
-<b>ROYALE SHOPPING</b>
+<a class="brand" href="#accueil"><img src="logo-royale.svg" alt=""><span><b>ROYALE SHOPPING</b><small>ÉGLISE ALLIANCE ROYALE</small></span></a>
+<div class="info">
+<span>WhatsApp : <a href="https://wa.me/2250711482324" target="_blank" rel="noopener">07 11 48 23 24</a></span>
 <span>© 2026 Église Alliance Royale · Yamoussoukro, Côte d'Ivoire</span>
 </div>
+</div>
 </footer>
+
+<a class="wa-float" href="https://wa.me/2250711482324?text=Bonjour%20Royale%20Shopping%2C%20j%27ai%20une%20question." target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 .2 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.4-1.7a11.9 11.9 0 0 0 5.6 1.4h0A11.9 11.9 0 0 0 20.5 3.5zM12 21.7a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4A9.8 9.8 0 1 1 12 21.7zm5.4-7.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.1-.8.9-.9 1.1-.3.2-.6.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.3 3.3 0 0 0-1 2.4 5.7 5.7 0 0 0 1.2 3 13 13 0 0 0 5 4.4c1.8.8 2.5.8 3.4.7a2.9 2.9 0 0 0 1.9-1.3 2.4 2.4 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
 
 <dialog id="orderDialog" aria-labelledby="odTitle">
 <div class="dlg">
@@ -271,6 +557,7 @@ dialog::backdrop{background:rgba(27,6,48,.72)}
 </div>
 </dialog>
 
+<script src="anim.js" defer></script>
 <script type="module" src="app.js"></script>
 </body>
 </html>

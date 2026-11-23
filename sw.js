@@ -1,9 +1,11 @@
-var CACHE = 'royale-shopping-v5';
+var CACHE = 'royale-shopping-v6';
 var FILES = [
   './',
   './index.html',
   './manifest.webmanifest',
   './app.js',
+  './anim.js',
+  './logo-royale.svg',
   './firebase-config.js',
   './icon-192.png',
   './icon-512.png',

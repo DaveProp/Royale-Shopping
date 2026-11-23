@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Logo Royale Shopping">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#F9E08B"/>
+<stop offset="0.5" stop-color="#D4A62A"/>
+<stop offset="1" stop-color="#B8860B"/>
+</linearGradient>
+</defs>
+<path d="M45 54 V44 a15 15 0 0 1 30 0 V54" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+<path d="M26 54 H94 L99 108 Q99 112 95 112 H25 Q21 112 21 108 Z" fill="url(#g)"/>
+<path d="M44 96 L39 72 L52 83 L60 67 L68 83 L81 72 L76 96 Z" fill="#2A0A4A"/>
+<rect x="44" y="98" width="32" height="5" rx="1.5" fill="#2A0A4A"/>
+<circle cx="39" cy="70" r="3" fill="#2A0A4A"/>
+<circle cx="60" cy="65" r="3" fill="#2A0A4A"/>
+<circle cx="81" cy="70" r="3" fill="#2A0A4A"/>
+</svg>
