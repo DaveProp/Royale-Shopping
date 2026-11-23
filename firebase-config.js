@@ -1,10 +1,10 @@
-// Collez ici la configuration de votre projet Firebase (voir LISEZ-MOI.txt, étape 4).
+// Configuration Firebase de Royale Shopping.
 // Ces valeurs ne sont pas secrètes : la sécurité est assurée par les règles Firestore.
 export const firebaseConfig = {
-  apiKey: "VOTRE_API_KEY",
-  authDomain: "VOTRE_PROJET.firebaseapp.com",
-  projectId: "VOTRE_PROJET",
-  storageBucket: "VOTRE_PROJET.appspot.com",
-  messagingSenderId: "VOTRE_SENDER_ID",
-  appId: "VOTRE_APP_ID"
+  apiKey: "AIzaSyBf-VetG3K56qarJEFRw94d5c-CxftMBgE",
+  authDomain: "royale-shopping.firebaseapp.com",
+  projectId: "royale-shopping",
+  storageBucket: "royale-shopping.firebasestorage.app",
+  messagingSenderId: "965223301313",
+  appId: "1:965223301313:web:1e5afc68821b99359f9440"
 };

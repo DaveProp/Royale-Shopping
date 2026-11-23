@@ -25,9 +25,9 @@ service cloud.firestore {
         && request.resource.data.createdAt == request.time;
 
       // Seul le compte admin peut LIRE, modifier ou supprimer les commandes.
-      // Remplacez ADMIN_EMAIL_ICI par l'email du compte admin, en minuscules.
+      // Compte admin : davidyoboue15@gmail.com
       allow read, update, delete: if request.auth != null
-        && request.auth.token.email == 'ADMIN_EMAIL_ICI';
+        && request.auth.token.email == 'davidyoboue15@gmail.com';
     }
   }
 }
