@@ -1,6 +1,9 @@
 import { firebaseConfig } from './firebase-config.js';
 
 const UNIT = 3500;
+const FEE_RATE = 0.02; // frais de service 2 %
+function feeFor(q) { return Math.round(q * UNIT * FEE_RATE); }
+function totalFor(q) { return q * UNIT + feeFor(q); }
 const WAVE = 'https://pay.wave.com/m/M_ci_fAtDWzspJqhS/c/ci/';
 const WA_NUMBER = '2250711482324';
 const FB = 'https://www.gstatic.com/firebasejs/10.12.2/';
@@ -56,7 +59,9 @@ let qty = 1;
 
 function updateTotal() {
   odQty.textContent = qty;
-  odTotal.textContent = fmt(qty * UNIT) + ' FCFA';
+  document.getElementById('odSub').textContent = fmt(qty * UNIT) + ' FCFA';
+  document.getElementById('odFee').textContent = fmt(feeFor(qty)) + ' FCFA';
+  odTotal.textContent = fmt(totalFor(qty)) + ' FCFA';
 }
 
 function showErr(msg, field) {
@@ -147,7 +152,7 @@ form.addEventListener('submit', async function (e) {
 
   odSubmit.disabled = true;
   odSubmit.textContent = 'Envoi en cours...';
-  const total = qty * UNIT;
+  const total = totalFor(qty);
 
   try {
     const ctx = await getDb();
@@ -181,7 +186,7 @@ form.addEventListener('submit', async function (e) {
     'T-shirt ACENA 2026 : ' + couleur + '\n' +
     'Taille : ' + taille + '\n' +
     'Quantité : ' + qty + '\n' +
-    'Montant : ' + fmt(total) + ' FCFA';
+    'Montant (frais de service 2 % inclus) : ' + fmt(total) + ' FCFA';
   document.getElementById('payWa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
   stepForm.hidden = true;
   stepPay.hidden = false;

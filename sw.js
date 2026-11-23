@@ -1,4 +1,4 @@
-var CACHE = 'royale-shopping-v9';
+var CACHE = 'royale-shopping-v10';
 var FILES = [
   './',
   './index.html',
