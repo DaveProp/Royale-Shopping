@@ -1,17 +1,17 @@
-var CACHE = 'royale-shopping-v4';
+var CACHE = 'royale-shopping-v5';
 var FILES = [
   './',
   './index.html',
   './manifest.webmanifest',
   './app.js',
   './firebase-config.js',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
-  './img/logo-ar.png',
-  './img/tshirt-blanc.jpg',
-  './img/tshirt-bleu.jpg',
-  './img/tshirt-noir.jpg',
-  './img/tshirt-jaune.jpg'
+  './icon-192.png',
+  './icon-512.png',
+  './logo-ar.png',
+  './tshirt-blanc.jpg',
+  './tshirt-bleu.jpg',
+  './tshirt-noir.jpg',
+  './tshirt-jaune.jpg'
 ];
 
 self.addEventListener('install', function (e) {

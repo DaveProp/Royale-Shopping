@@ -43,9 +43,9 @@ Je vous conseille un NOUVEAU projet, pour ne pas mélanger avec Entre Nous.
   Ajoutez votre domaine GitHub, par exemple : daveprop.github.io
 
 ÉTAPE 7 - Mettre en ligne sur GitHub Pages
-  Envoyez TOUS les fichiers de ce dossier dans votre dépôt GitHub
+  Envoyez TOUS les fichiers de ce dossier dans votre dépôt GitHub (version à plat : aucun sous-dossier, tout se met à la racine)
   (index.html, app.js, admin.html, admin.js, firebase-config.js, sw.js,
-  manifest.webmanifest, dossiers icons et img), puis activez GitHub Pages.
+  manifest.webmanifest, les 2 icônes et les 5 images), puis activez GitHub Pages.
 
 UTILISATION
 - Site client : https://VOTRE-COMPTE.github.io/NOM-DU-DEPOT/
