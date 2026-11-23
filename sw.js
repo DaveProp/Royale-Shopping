@@ -1,4 +1,4 @@
-var CACHE = 'royale-shopping-v8';
+var CACHE = 'royale-shopping-v9';
 var FILES = [
   './',
   './index.html',
@@ -9,6 +9,8 @@ var FILES = [
   './firebase-config.js',
   './icon-192.png',
   './icon-512.png',
+  './icon-maskable-512.png',
+  './icon-maskable-512.png',
   './logo-ar.png',
   './tshirt-blanc.jpg',
   './tshirt-bleu.jpg',
