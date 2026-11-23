@@ -136,6 +136,18 @@
     counters.forEach(function (el) { co.observe(el); });
   }
 
+  /* Aide à l'installation sur Android si le bouton automatique n'apparaît pas */
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      var btn = $('#install');
+      var hint = $('#andhint');
+      var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+      if (hint && btn && /Android/i.test(navigator.userAgent) && !standalone && btn.style.display !== 'inline-block') {
+        hint.hidden = false;
+      }
+    }, 4000);
+  });
+
   /* Retrait de l'écran d'ouverture */
   window.addEventListener('load', function () {
     setTimeout(function () {

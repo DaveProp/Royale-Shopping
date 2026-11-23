@@ -1,4 +1,4 @@
-var CACHE = 'royale-shopping-v6';
+var CACHE = 'royale-shopping-v7';
 var FILES = [
   './',
   './index.html',
@@ -16,8 +16,15 @@ var FILES = [
   './tshirt-jaune.jpg'
 ];
 
+// Chaque fichier est mis en cache séparément : un fichier absent ne bloque plus l'installation.
 self.addEventListener('install', function (e) {
-  e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }));
+  e.waitUntil(
+    caches.open(CACHE).then(function (c) {
+      return Promise.all(FILES.map(function (f) {
+        return c.add(f).catch(function () {});
+      }));
+    })
+  );
   self.skipWaiting();
 });
 
