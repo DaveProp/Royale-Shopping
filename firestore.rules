@@ -6,21 +6,28 @@ service cloud.firestore {
 
       // Tout client peut ENVOYER une commande (nom et téléphone obligatoires, email facultatif).
       allow create: if request.resource.data.keys().hasOnly(
-            ['nom', 'telephone', 'email', 'couleur', 'taille', 'quantite', 'montant', 'statut', 'createdAt'])
+            ['nom', 'telephone', 'email', 'produit', 'couleur', 'taille', 'quantite', 'montant', 'statut', 'createdAt'])
         && request.resource.data.nom is string
         && request.resource.data.nom.size() >= 2
         && request.resource.data.nom.size() <= 100
         && request.resource.data.telephone is string
-        && request.resource.data.telephone.size() >= 8
-        && request.resource.data.telephone.size() <= 20
+        && request.resource.data.telephone.matches('^\\+?[0-9]{8,15}$')
         && (!('email' in request.resource.data)
             || (request.resource.data.email is string && request.resource.data.email.size() <= 120))
-        && request.resource.data.couleur in ['Blanc', 'Bleu ciel', 'Noir', 'Jaune']
+        && request.resource.data.produit in ['T-shirt', 'Polo', 'Pull', 'Pull à capuche']
+        && ((request.resource.data.produit == 'T-shirt'
+              && request.resource.data.couleur in ['Blanc', 'Bleu ciel', 'Noir', 'Jaune'])
+            || (request.resource.data.produit != 'T-shirt'
+              && request.resource.data.couleur in ['Blanc', 'Noir']))
         && request.resource.data.taille in ['S', 'M', 'L', 'XL', 'XXL']
         && request.resource.data.quantite is int
         && request.resource.data.quantite >= 1
         && request.resource.data.quantite <= 20
-        && request.resource.data.montant == request.resource.data.quantite * 3500
+        // montant = quantite x prix x 1,02 (2 % de frais de service)
+        // T-shirt 3500 -> 3570 | Polo 5000 -> 5100 | Pull et Pull à capuche 10000 -> 10200
+        && ((request.resource.data.produit == 'T-shirt' && request.resource.data.montant == request.resource.data.quantite * 3570)
+            || (request.resource.data.produit == 'Polo' && request.resource.data.montant == request.resource.data.quantite * 5100)
+            || (request.resource.data.produit in ['Pull', 'Pull à capuche'] && request.resource.data.montant == request.resource.data.quantite * 10200))
         && request.resource.data.statut == 'en_attente'
         && request.resource.data.createdAt == request.time;
 

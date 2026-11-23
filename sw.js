@@ -1,4 +1,4 @@
-var CACHE = 'royale-shopping-v10';
+var CACHE = 'royale-shopping-v11';
 var FILES = [
   './',
   './index.html',
@@ -15,7 +15,13 @@ var FILES = [
   './tshirt-blanc.jpg',
   './tshirt-bleu.jpg',
   './tshirt-noir.jpg',
-  './tshirt-jaune.jpg'
+  './tshirt-jaune.jpg',
+  './polo-blanc.jpg',
+  './polo-noir.jpg',
+  './pull-blanc.jpg',
+  './pull-noir.jpg',
+  './capuche-blanc.jpg',
+  './capuche-noir.jpg'
 ];
 
 // Chaque fichier est mis en cache séparément : un fichier absent ne bloque plus l'installation.

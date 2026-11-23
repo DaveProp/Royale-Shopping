@@ -92,9 +92,9 @@ function start() {
   search.addEventListener('input', render);
 
   $('exportBtn').addEventListener('click', function () {
-    const head = ['Date', 'Nom', 'Téléphone', 'Email', 'Couleur', 'Taille', 'Quantité', 'Montant FCFA', 'Statut'];
+    const head = ['Date', 'Nom', 'Téléphone', 'Email', 'Produit', 'Couleur', 'Taille', 'Quantité', 'Montant FCFA', 'Statut'];
     const lines = [head].concat(orders.map(function (o) {
-      return [dateStr(o), o.nom, o.telephone, o.email || '', o.couleur, o.taille, o.quantite, o.montant, statutLabel(o.statut)];
+      return [dateStr(o), o.nom, o.telephone, o.email || '', o.produit || 'T-shirt', o.couleur, o.taille, o.quantite, o.montant, statutLabel(o.statut)];
     }));
     const csv = lines.map(function (row) {
       return row.map(function (v, i) {
@@ -150,7 +150,7 @@ function start() {
     c.appendChild(contact);
 
     c.appendChild(el('div', 'mail', o.email ? o.email : 'Email non renseigné'));
-    c.appendChild(el('div', 'item', 'T-shirt ' + o.couleur + ' · taille ' + o.taille + ' · quantité ' + o.quantite + ' · ' + fmt(o.montant) + ' FCFA'));
+    c.appendChild(el('div', 'item', (o.produit || 'T-shirt') + ' ' + o.couleur + ' · taille ' + o.taille + ' · quantité ' + o.quantite + ' · ' + fmt(o.montant) + ' FCFA'));
 
     const sel = el('select', 'statut');
     sel.setAttribute('aria-label', 'Statut de la commande de ' + o.nom);

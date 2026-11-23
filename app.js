@@ -1,6 +1,7 @@
 import { firebaseConfig } from './firebase-config.js';
 
-const UNIT = 3500;
+const PRIX = { 'T-shirt': 3500, 'Polo': 5000, 'Pull': 10000, 'Pull à capuche': 10000 };
+let UNIT = PRIX['T-shirt'];
 const FEE_RATE = 0.02; // frais de service 2 %
 function feeFor(q) { return Math.round(q * UNIT * FEE_RATE); }
 function totalFor(q) { return q * UNIT + feeFor(q); }
@@ -55,6 +56,7 @@ const odErr = document.getElementById('odErr');
 const odSubmit = document.getElementById('odSubmit');
 
 let couleur = '';
+let produit = 'T-shirt';
 let qty = 1;
 
 function updateTotal() {
@@ -79,12 +81,14 @@ function configured() {
   return firebaseConfig.apiKey && firebaseConfig.apiKey.indexOf('VOTRE') !== 0;
 }
 
-function openDialog(color) {
+function openDialog(color, prod) {
+  produit = PRIX[prod] ? prod : 'T-shirt';
+  UNIT = PRIX[produit];
   couleur = color;
   qty = 1;
   form.reset();
   hideErr();
-  odItem.textContent = 'T-shirt ACENA 2026 · ' + color + ' · ' + fmt(UNIT) + ' FCFA';
+  odItem.textContent = produit + ' ACENA 2026 · ' + color + ' · ' + fmt(UNIT) + ' FCFA';
   updateTotal();
   stepForm.hidden = false;
   stepPay.hidden = true;
@@ -100,7 +104,7 @@ function closeDialog() {
 
 document.querySelectorAll('[data-order]').forEach(function (btn) {
   btn.addEventListener('click', function () {
-    openDialog(btn.getAttribute('data-order'));
+    openDialog(btn.getAttribute('data-order'), btn.getAttribute('data-prod'));
   });
 });
 
@@ -159,6 +163,7 @@ form.addEventListener('submit', async function (e) {
     const data = {
       nom: nom,
       telephone: telephone,
+      produit: produit,
       couleur: couleur,
       taille: taille,
       quantite: qty,
@@ -183,7 +188,7 @@ form.addEventListener('submit', async function (e) {
   wave.textContent = 'Payer ' + fmt(total) + ' FCFA avec Wave';
   const msg = "Bonjour, j'ai payé ma commande Royale Shopping.\n" +
     'Nom : ' + nom + '\n' +
-    'T-shirt ACENA 2026 : ' + couleur + '\n' +
+    'Article : ' + produit + ' ACENA 2026, ' + couleur + '\n' +
     'Taille : ' + taille + '\n' +
     'Quantité : ' + qty + '\n' +
     'Montant (frais de service 2 % inclus) : ' + fmt(total) + ' FCFA';

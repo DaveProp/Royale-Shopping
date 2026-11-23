@@ -45,7 +45,7 @@ Je vous conseille un NOUVEAU projet, pour ne pas mélanger avec Entre Nous.
 ÉTAPE 7 - Mettre en ligne sur GitHub Pages
   Envoyez TOUS les fichiers de ce dossier dans votre dépôt GitHub (version à plat : aucun sous-dossier, tout se met à la racine)
   (index.html, app.js, admin.html, admin.js, firebase-config.js, sw.js,
-  manifest.webmanifest, les 2 icônes et les 5 images), puis activez GitHub Pages.
+  manifest.webmanifest, les icônes et toutes les images .jpg), puis activez GitHub Pages.
 
 UTILISATION
 - Site client : https://VOTRE-COMPTE.github.io/NOM-DU-DEPOT/
@@ -59,7 +59,7 @@ CONSEILS
 - Quand une capture Wave arrive sur WhatsApp, cherchez le client dans l'admin
   et passez sa commande à "Payé".
 - Gardez votre mot de passe admin pour vous seul.
-- Si le prix change, il faut modifier 3500 dans app.js ET dans firestore.rules.
+- - Prix : T-shirt 3500, Polo 5000, Pull et Pull à capuche 10000, plus 2 % de frais de service. Pour changer un prix : modifier PRIX dans app.js ET les montants dans firestore.rules (3570, 5100, 10200).
 - Après chaque mise à jour des fichiers, rouvrez l'application deux fois
   pour qu'elle charge la nouvelle version.
 

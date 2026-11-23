@@ -154,6 +154,13 @@ nav a.cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(242,207,10
 .rule{width:90px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,var(--gold-2),transparent);margin-top:8px}
 
 /* Boutique */
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:-18px 0 40px}
+.chips a{padding:10px 18px;border-radius:999px;border:1px solid var(--gold-2);color:var(--ink);text-decoration:none;font-weight:600;font-size:14px;background:#fff;transition:background .2s,transform .2s}
+.chips a:hover{background:var(--gold);transform:translateY(-2px)}
+.cat{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin:56px 0 22px;padding-bottom:10px;border-bottom:2px solid var(--gold-2);scroll-margin-top:90px}
+.cat:first-of-type{margin-top:0}
+.cat h3{font-family:var(--serif);font-weight:800;font-size:clamp(24px,4vw,32px)}
+.cat span{color:var(--gold-3);font-weight:700;font-size:15px}
 .grid{display:flex;flex-wrap:wrap;gap:30px}
 .cell{flex:1 1 440px;min-width:0;display:flex}
 .card{position:relative;width:100%;background:#fff;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 12px 34px rgba(42,10,74,.09);transition:box-shadow .35s,transform .25s ease-out;will-change:transform}
@@ -366,10 +373,17 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="wrap">
 <div class="head reveal">
 <div class="kicker">La boutique</div>
-<h2>T-shirts ACENA 2026</h2>
-<p>Un seul modèle, quatre couleurs. Face : ACENA 2026. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<h2>Collection ACENA 2026</h2>
+<p>Un seul visuel, plusieurs modèles. Face : ACENA 2026. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
 <div class="rule"></div>
 </div>
+<div class="chips">
+<a href="#cat-tshirt">T-shirts · 3 500 F</a>
+<a href="#cat-polo">Polos · 5 000 F</a>
+<a href="#cat-pull">Pulls · 10 000 F</a>
+<a href="#cat-capuche">Pulls à capuche · 10 000 F</a>
+</div>
+<div class="cat reveal" id="cat-tshirt"><h3>T-shirts</h3><span>4 coloris · 3 500 FCFA</span></div>
 <div class="grid">
 
 <div class="cell reveal" style="--i:0">
@@ -378,7 +392,7 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="body">
 <div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>T-shirt ACENA 2026 · Blanc</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Blanc">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-prod="T-shirt" data-order="Blanc">Commander</button></div>
 </div>
 </article>
 </div>
@@ -389,7 +403,7 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="body">
 <div class="name"><span class="dot" style="background:#2DA8E8"></span><h3>T-shirt ACENA 2026 · Bleu ciel</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Bleu ciel">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-prod="T-shirt" data-order="Bleu ciel">Commander</button></div>
 </div>
 </article>
 </div>
@@ -400,7 +414,7 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="body">
 <div class="name"><span class="dot" style="background:#111111"></span><h3>T-shirt ACENA 2026 · Noir</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Noir">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-prod="T-shirt" data-order="Noir">Commander</button></div>
 </div>
 </article>
 </div>
@@ -411,7 +425,85 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="body">
 <div class="name"><span class="dot" style="background:#FFD500"></span><h3>T-shirt ACENA 2026 · Jaune</h3></div>
 <p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
-<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-order="Jaune">Commander</button></div>
+<div class="row"><strong>3 500 FCFA</strong><button class="btn dark" type="button" data-prod="T-shirt" data-order="Jaune">Commander</button></div>
+</div>
+</article>
+</div>
+
+</div>
+<div class="cat reveal" id="cat-polo"><h3>Polos</h3><span>2 coloris · 5 000 FCFA</span></div>
+<div class="grid">
+
+<div class="cell reveal" style="--i:0">
+<article class="card">
+<div class="ph"><img src="polo-blanc.jpg" alt="Polo ACENA 2026 blanc, face et dos" loading="lazy"><span class="price">5 000 FCFA</span></div>
+<div class="body">
+<div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>Polo ACENA 2026 · Blanc</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><strong>5 000 FCFA</strong><button class="btn dark" type="button" data-prod="Polo" data-order="Blanc">Commander</button></div>
+</div>
+</article>
+</div>
+
+<div class="cell reveal" style="--i:0">
+<article class="card">
+<div class="ph"><img src="polo-noir.jpg" alt="Polo ACENA 2026 noir, face et dos" loading="lazy"><span class="price">5 000 FCFA</span></div>
+<div class="body">
+<div class="name"><span class="dot" style="background:#111111"></span><h3>Polo ACENA 2026 · Noir</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><strong>5 000 FCFA</strong><button class="btn dark" type="button" data-prod="Polo" data-order="Noir">Commander</button></div>
+</div>
+</article>
+</div>
+
+</div>
+<div class="cat reveal" id="cat-pull"><h3>Pulls</h3><span>2 coloris · 10 000 FCFA</span></div>
+<div class="grid">
+
+<div class="cell reveal" style="--i:0">
+<article class="card">
+<div class="ph"><img src="pull-blanc.jpg" alt="Pull ACENA 2026 blanc, face et dos" loading="lazy"><span class="price">10 000 FCFA</span></div>
+<div class="body">
+<div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>Pull ACENA 2026 · Blanc</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><strong>10 000 FCFA</strong><button class="btn dark" type="button" data-prod="Pull" data-order="Blanc">Commander</button></div>
+</div>
+</article>
+</div>
+
+<div class="cell reveal" style="--i:0">
+<article class="card">
+<div class="ph"><img src="pull-noir.jpg" alt="Pull ACENA 2026 noir, face et dos" loading="lazy"><span class="price">10 000 FCFA</span></div>
+<div class="body">
+<div class="name"><span class="dot" style="background:#111111"></span><h3>Pull ACENA 2026 · Noir</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><strong>10 000 FCFA</strong><button class="btn dark" type="button" data-prod="Pull" data-order="Noir">Commander</button></div>
+</div>
+</article>
+</div>
+
+</div>
+<div class="cat reveal" id="cat-capuche"><h3>Pulls à capuche</h3><span>2 coloris · 10 000 FCFA</span></div>
+<div class="grid">
+
+<div class="cell reveal" style="--i:0">
+<article class="card">
+<div class="ph"><img src="capuche-blanc.jpg" alt="Pull à capuche ACENA 2026 blanc, face et dos" loading="lazy"><span class="price">10 000 FCFA</span></div>
+<div class="body">
+<div class="name"><span class="dot" style="background:#FFFFFF"></span><h3>Pull à capuche ACENA 2026 · Blanc</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><strong>10 000 FCFA</strong><button class="btn dark" type="button" data-prod="Pull à capuche" data-order="Blanc">Commander</button></div>
+</div>
+</article>
+</div>
+
+<div class="cell reveal" style="--i:0">
+<article class="card">
+<div class="ph"><img src="capuche-noir.jpg" alt="Pull à capuche ACENA 2026 noir, face et dos" loading="lazy"><span class="price">10 000 FCFA</span></div>
+<div class="body">
+<div class="name"><span class="dot" style="background:#111111"></span><h3>Pull à capuche ACENA 2026 · Noir</h3></div>
+<p>Face : ACENA 2026, #31 jours de jeûne &amp; prière. Dos : Yamoussoukro, tes promesses s'accompliront.</p>
+<div class="row"><strong>10 000 FCFA</strong><button class="btn dark" type="button" data-prod="Pull à capuche" data-order="Noir">Commander</button></div>
 </div>
 </article>
 </div>
@@ -447,7 +539,7 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="nums">
 <div class="num reveal" style="--i:0"><b data-count="31">31</b><span>JOURS DE JEÛNE ET PRIÈRE</span></div>
 <div class="num reveal" style="--i:1"><b data-count="4">4</b><span>COLORIS DISPONIBLES</span></div>
-<div class="num reveal" style="--i:2"><b data-count="3500">3 500</b><span>FCFA LE T-SHIRT</span></div>
+<div class="num reveal" style="--i:2"><b data-count="3500">3 500</b><span>FCFA LE T-SHIRT, DÈS</span></div>
 </div>
 </div>
 </section>
@@ -460,8 +552,8 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div class="rule"></div>
 </div>
 <div class="steps">
-<div class="step reveal" style="--i:0"><div class="n">1</div><h3>Choisissez et remplissez</h3><p>Touchez « Commander » sous la couleur voulue. Nom et téléphone obligatoires, email facultatif, puis la taille et la quantité.</p></div>
-<div class="step reveal" style="--i:1"><div class="n">2</div><h3>Payez avec Wave</h3><p>Le montant est déjà saisi : 3 500 FCFA par t-shirt + 2 % de frais de service.</p></div>
+<div class="step reveal" style="--i:0"><div class="n">1</div><h3>Choisissez et remplissez</h3><p>Touchez « Commander » sous le modèle et la couleur voulus. Nom et téléphone obligatoires, email facultatif, puis la taille et la quantité.</p></div>
+<div class="step reveal" style="--i:1"><div class="n">2</div><h3>Payez avec Wave</h3><p>Le montant est déjà saisi, avec 2 % de frais de service inclus.</p></div>
 <div class="step reveal" style="--i:2"><div class="n">3</div><h3>Envoyez la capture</h3><p>Sur WhatsApp au 07 11 48 23 24, avec votre capture de paiement.</p></div>
 </div>
 </div>
@@ -536,9 +628,9 @@ dialog::backdrop{background:rgba(18,4,31,.78);-webkit-backdrop-filter:blur(4px);
 <div>
 <div style="font-weight:600;font-size:15px">Quantité</div>
 <div class="qty">
-<button type="button" data-d="-1" aria-label="Retirer un t-shirt">−</button>
+<button type="button" data-d="-1" aria-label="Retirer un article">−</button>
 <output id="odQty" aria-live="polite">1</output>
-<button type="button" data-d="1" aria-label="Ajouter un t-shirt">+</button>
+<button type="button" data-d="1" aria-label="Ajouter un article">+</button>
 </div>
 </div>
 </div>
