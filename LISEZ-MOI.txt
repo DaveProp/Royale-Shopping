@@ -71,3 +71,10 @@ INSTALLER L'APPLICATION SUR ANDROID (menu des applications)
 - Si un ancien raccourci existe déjà, supprimez-le d'abord, puis réinstallez.
 - Une fois installée, l'application apparaît aussi dans la liste de toutes vos applications.
 Sur iPhone : Partager, puis "Sur l'écran d'accueil".
+
+SI L'APPLICATION RESTE UN SIMPLE RACCOURCI
+- Supprimez l'ancien raccourci Royale Shopping de l'écran d'accueil.
+- Chrome : icône à gauche de l'adresse, "Paramètres du site", "Effacer et réinitialiser".
+- Rouvrez le lien dans Chrome, attendez 10 secondes, menu (trois points), "Installer l'application".
+- Le message "ajouté à l'écran d'accueil" est normal : l'application est installée.
+- Cette version a un nouvel identifiant d'installation (royale-shopping-2) pour repartir de zéro.
